@@ -1,4 +1,4 @@
-var $currentaddress = "uploads/youngforyou.gp5";
+var $currentaddress = "uploads/假如爱有天意.gp5";
 var $currentusername;
 var $collectstatus = false;
 var $theaction;
