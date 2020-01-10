@@ -2,10 +2,11 @@
 	$username = $_POST["username"]; 
  	$tabaddress = $_POST["tabaddress"]; 
  	$action = $_POST["action"]; 
- 	$servername = "localhost";
+ 	$servername = "localhost:8889";
 	$sqlusername = "root";
-	$sqlpassword = "cao3967370";
+	$sqlpassword = "630207";
 	$dbname = "guitartabs";
+	$port = 8889;
 	 
 	// 创建连接
 	$conn = new mysqli($servername, $sqlusername, $sqlpassword, $dbname);

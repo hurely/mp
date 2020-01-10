@@ -1,14 +1,16 @@
 <?php
-		$servername = "localhost";
-		$username = "root";
-		$password = "cao3967370";
+		$servername = "localhost:8889";
+		$sqlusername = "root";
+		$sqlpassword = "630207";
 		$dbname = "guitartabs";
+		$port = 8889;
+
 		$address=$_POST["address"];
 		 
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		$conn = new mysqli($servername, $sqlusername, $sqlpassword, $dbname);
 		mysqli_query($conn,'set names utf8');
 		if ($conn->connect_error) {
-		    die("Á¬½ÓÊ§°Ü: " . $conn->connect_error);
+		    die("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½: " . $conn->connect_error);
 		} 
 		
 		$sql = "UPDATE tabs set searchnum=searchnum+1 where address = '$address'";

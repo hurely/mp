@@ -1,10 +1,11 @@
 <?php
 	$username = $_POST["username"]; 
  	$password = $_POST["password"]; 
- 	$servername = "localhost";
+ 	$servername = "localhost:8889";
 	$sqlusername = "root";
-	$sqlpassword = "cao3967370";
+	$sqlpassword = "630207";
 	$dbname = "guitartabs";
+	$port = 8889;
 	 
 	// 创建连接
 	$conn = new mysqli($servername, $sqlusername, $sqlpassword, $dbname);

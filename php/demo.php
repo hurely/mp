@@ -1,7 +1,7 @@
 	<?php
 		$servername = "localhost";
 		$username = "root";
-		$password = "cao3967370";
+		$password = "630207";
 		$dbname = "guitartabs";
 		$search=$_POST["search"];
 		 

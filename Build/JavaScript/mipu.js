@@ -15,7 +15,7 @@ $(".closebutton").click(function () {
 
 $(".a-upload").on("change", "input[type='file']", function () {
     var filePath = $(this).val();
-    if (filePath.indexOf("gp4") != -1 || filePath.indexOf("gp5") != -1 || filePath.indexOf("gp3") != -1) {
+    if (filePath.indexOf("gp4") != -1 || filePath.indexOf("gp5") != -1 || filePath.indexOf("gp3") != -1 || filePath.indexOf("gtp") != -1) {
         $(".fileerrorTip").html("").hide();
         var arr = filePath.split('\\');
         var fileName = arr[arr.length - 1];
@@ -56,7 +56,7 @@ $("#collectpic").click(function () {
                 type: "post",
                 url: "php/collect.php",
                 dataType: "json",
-                data: {username: $currentusername, tabaddress: $currentaddress, action: $theaction},
+                data: { username: $currentusername, tabaddress: $currentaddress, action: $theaction },
                 success: function (feedbackdata) {
                 }
             });
@@ -64,7 +64,7 @@ $("#collectpic").click(function () {
                 type: "post",
                 url: "php/collectinfo.php",
                 dataType: "json",
-                data: {username: $currentusername},
+                data: { username: $currentusername },
                 success: function (feedback) {
                     $collectsongs = feedback;
                     $("#mycollectlist").find("li").remove();
@@ -91,16 +91,16 @@ $("#ricotext").keyup(
             type: "post",
             url: "php/search.php",
             dataType: "json",
-            data: {search: $("#ricotext").val()},
+            data: { search: $("#ricotext").val() },
             success: function (feedbackdata) {
                 $("#searchresult").find("li").remove();
                 for (var i = 0; i < feedbackdata.length; i++) {
-                    $("#searchresult").append("<li class='searchresult-li' data='" + feedbackdata[i].address.replace(/'/g,"&apos;") + "'>" + feedbackdata[i].name + "&nbsp;-&nbsp;" + feedbackdata[i].singer + "</li>");
+                    $("#searchresult").append("<li class='searchresult-li' data='" + feedbackdata[i].address.replace(/'/g, "&apos;") + "'>" + feedbackdata[i].name + "&nbsp;-&nbsp;" + feedbackdata[i].singer + "</li>");
                 }
                 ;
                 //处理搜索页面结果的点击
                 $(".searchresult-li").click(function () {
-                    $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g,"'"));
+                    $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g, "'"));
                     contains($(this).attr("data"));
                     $("#playPausepic").attr("src", "pics/play.svg");
                     $("#songinfo1").html($(this));
@@ -111,7 +111,7 @@ $("#ricotext").keyup(
                         type: "post",
                         url: "php/count.php",
                         dataType: "json",
-                        data: {address: $(this).attr("data").replace(/&apos;/g,"'")},
+                        data: { address: $(this).attr("data").replace(/&apos;/g, "'") },
                         success: function (feedbackdata) {
                         }
                     });
@@ -131,7 +131,7 @@ $(document).ready(function () {
             type: "post",
             url: "php/login.php",
             dataType: "text",
-            data: {username: user, password: psw},
+            data: { username: user, password: psw },
             success: function (feedbackdata) {
                 if (feedbackdata === "success") {
                     // $("#loginstatus").html("登录成功");
@@ -149,16 +149,16 @@ $(document).ready(function () {
                     type: "post",
                     url: "php/collectinfo.php",
                     dataType: "json",
-                    data: {username: $currentusername},
+                    data: { username: $currentusername },
                     success: function (feedback) {
                         $collectsongs = feedback;
                         $("#mycollectlist").find("li").remove();
                         for (var j = 0; j < feedback.length; j++) {
-                            $("#mycollectlist").append("<li class='collectlist-li' data='" + feedback[j].address.replace(/'/g,"&apos;") + "'>" + feedback[j].name + "&nbsp;-&nbsp;" + feedback[j].singer + "</li>");
+                            $("#mycollectlist").append("<li class='collectlist-li' data='" + feedback[j].address.replace(/'/g, "&apos;") + "'>" + feedback[j].name + "&nbsp;-&nbsp;" + feedback[j].singer + "</li>");
                         }
                         ;
                         $(".collectlist-li").click(function () {
-                            $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g,"'"));
+                            $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g, "'"));
                             contains($(this).attr("data"));
                             $("#playPausepic").attr("src") == "pics/play.svg";
                             $currentaddress = $(this).attr("data");
@@ -167,7 +167,7 @@ $(document).ready(function () {
                                 type: "post",
                                 url: "php/count.php",
                                 dataType: "json",
-                                data: {address: $(this).attr("data").replace(/&apos;/g,"'")},
+                                data: { address: $(this).attr("data").replace(/&apos;/g, "'") },
                                 success: function (feedbackdata) {
                                 }
                             });
@@ -187,12 +187,12 @@ $(document).ready(function () {
         success: function (feedbackdata) {
             $("#rankinglist").find("li").remove();
             for (var i = 0; i < feedbackdata.length; i++) {
-                let address = feedbackdata[i].address.replace(/'/g,"&apos;");
+                let address = feedbackdata[i].address.replace(/'/g, "&apos;");
                 $("#rankinglist").append("<li class='rankinglist-li' data='" + address + "'>" + feedbackdata[i].name + "&nbsp;-&nbsp;" + feedbackdata[i].singer + "</li>");
             }
             ;
             $(".rankinglist-li").click(function () {
-                $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g,"'"));
+                $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g, "'"));
                 $("#playPausepic").attr("src", "pics/play.svg");
                 contains($(this).attr("data"));
                 $(".floatarea").hide();
@@ -202,7 +202,7 @@ $(document).ready(function () {
                     type: "post",
                     url: "php/count.php",
                     dataType: "json",
-                    data: {address: $(this).attr("data").replace(/&apos;/g,"'")},
+                    data: { address: $(this).attr("data").replace(/&apos;/g, "'") },
                     success: function (feedbackdata) {
                     }
                 });
@@ -219,6 +219,9 @@ $("#upload-newtab-button").click(function () {
         data.append("name", $("#uploadname").val());
         data.append("singer", $("#uploadsinger").val());
         data.append("file", fileobj);
+
+        console.log(data);
+        debugger;
 
         $.ajax({
             url: 'php/upload.php',
@@ -255,7 +258,7 @@ $(function () {
             type: "post",
             url: "php/login.php",
             dataType: "text",
-            data: {username: $("#usernameinput").val(), password: $("#passwordinput").val()},
+            data: { username: $("#usernameinput").val(), password: $("#passwordinput").val() },
             success: function (feedbackdata) {
                 if (feedbackdata === "success") {
                     // $("#loginstatus").html("登录成功");
@@ -285,16 +288,16 @@ $(function () {
                     type: "post",
                     url: "php/collectinfo.php",
                     dataType: "json",
-                    data: {username: $currentusername},
+                    data: { username: $currentusername },
                     success: function (feedback) {
                         $collectsongs = feedback;
                         $("#mycollectlist").find("li").remove();
                         for (var j = 0; j < feedback.length; j++) {
-                            $("#mycollectlist").append("<li class='collectlist-li' data='" + feedback[j].address.replace(/'/g,"&apos;") + "'>" + feedback[j].name + "&nbsp;-&nbsp;" + feedback[j].singer + "</li>");
+                            $("#mycollectlist").append("<li class='collectlist-li' data='" + feedback[j].address.replace(/'/g, "&apos;") + "'>" + feedback[j].name + "&nbsp;-&nbsp;" + feedback[j].singer + "</li>");
                         }
                         ;
                         $(".collectlist-li").click(function () {
-                            $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g,"'"));
+                            $('#alphaTab').alphaTab('load', $(this).attr("data").replace(/&apos;/g, "'"));
                             contains($(this).attr("data"));
                             $("#playPausepic").attr("src") == "pics/play.svg";
                             $currentaddress = $(this).attr("data");
@@ -303,7 +306,7 @@ $(function () {
                                 type: "post",
                                 url: "php/count.php",
                                 dataType: "json",
-                                data: {address: $(this).attr("data").replace(/&apos;/g,"'")},
+                                data: { address: $(this).attr("data").replace(/&apos;/g, "'") },
                                 success: function (feedbackdata) {
                                 }
                             });
@@ -323,7 +326,7 @@ $(function () {
                         type: "post",
                         url: "php/register.php",
                         dataType: "text",
-                        data: {username: $("#usernamereg").val(), password: $("#passwordreg").val()},
+                        data: { username: $("#usernamereg").val(), password: $("#passwordreg").val() },
                         success: function (feedbackdata) {
                             $("#registerstatus").html(feedbackdata);
                         },
@@ -485,6 +488,7 @@ $(".multiple_a-upload").on("change", function () {
 
 })
 $("#multiple_upload-newtab-button").click(function () {
+    debugger
     if ($("#multiple_uploadfile").val()) {
         var files = $('#multiple_uploadfile')[0].files;
         for (let i = 0; i < files.length; i++) {

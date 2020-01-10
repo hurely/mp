@@ -1,15 +1,16 @@
 <?php
 	$username = $_POST["username"]; 
- 	$servername = "localhost";
+	$servername = "localhost:8889";
 	$sqlusername = "root";
-	$sqlpassword = "cao3967370";
+	$sqlpassword = "630207";
 	$dbname = "guitartabs";
+	$port = 8889;
 	 
-	// ´´½¨Á¬½Ó
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	$conn = new mysqli($servername, $sqlusername, $sqlpassword, $dbname);
 
 	if ($conn->connect_error) {
-	    die("Á¬½ÓÊ§°Ü: " . $conn->connect_error);
+	    die("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½: " . $conn->connect_error);
 	} 
 	mysqli_query($conn,'set names utf8');
 	$sql = "SELECT tabs.address,tabs.name,tabs.singer FROM collect,tabs where collect.username = '$username' AND collect.tabaddress = tabs.address";

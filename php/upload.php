@@ -1,10 +1,13 @@
 <?php
 header("charset=utf-8");
-
 $name = addslashes($_POST['name']);
 $singer = addslashes($_POST['singer']);
 
+echo $name;
 
+//uploads
+
+// $upload_path = "/Users/kung/Documents/3-个人成长/个人开发/爱尚吉他lite/guitartap/uploads/";
 $upload_path = "/var/www/html/uploads/";
 $dest_file = $upload_path.basename($_FILES['file']['name']);
 
@@ -13,10 +16,12 @@ $songaddress = "uploads/".addslashes($songname);
 
 move_uploaded_file($_FILES['file']['tmp_name'],$dest_file);
 //将乐谱信息插入数据库中
-$servername = "localhost";
-$sqlusername = "root";
-$sqlpassword = "cao3967370";
-$dbname = "guitartabs";
+
+$servername = "localhost:8889";
+	$sqlusername = "root";
+	$sqlpassword = "630207";
+	$dbname = "guitartabs";
+	$port = 8889;
  
 // 创建连接
 $conn = new mysqli($servername, $sqlusername, $sqlpassword, $dbname);
